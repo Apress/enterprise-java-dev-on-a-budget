@@ -1,0 +1,10 @@
+<deployment xmlns="http://xml.apache.org/axis/wsdd/"
+            xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+ <service name="News" provider="java:RPC">
+  <parameter name="className" value="com.ejdoab.tcms.ws.News"/>
+  <parameter name="allowedMethods" value="*"/>
+ </service>
+ <beanMapping qname="ns:NewsItemDTO" xmlns:ns="services.tcms.ejdoab.com" 
+    languageSpecificType="java:com.ejdoab.tcms.services.dto.NewsItemDTO"/>
+</deployment>
+

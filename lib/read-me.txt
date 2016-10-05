@@ -1,0 +1,5 @@
+Directory: lib
+Contents: location of all runtime libraries
+
+commons-validator.jar in this directory is version 1.0.2
+commons-validator.jar in struts directory is an older version

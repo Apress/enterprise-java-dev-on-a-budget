@@ -1,0 +1,1202 @@
+<?xml version="1.0"?>
+<project name="Enterprise Java Development on a Budget" default="all" basedir=".">
+
+    <description>
+    This build script was developed to be a generic enterprise developemnt build script
+    using ANT 1.5.3 (ant.apache.org). To customize it or use it for other project modify
+    the build.properties file.
+    </description>
+
+    <!-- =================================================================== -->
+    <!-- Initialization                                                      -->
+    <!-- =================================================================== -->
+
+    <property name="build" location="build" />
+    <property name="lib" location="lib" />            
+    <property name="lib-dev" location="${lib}/development" />                    
+
+    <!-- Override default properties -->
+    
+    <property file="build.properties"/>     		
+
+    <!-- Default Properties --> 
+    
+    <!-- Directories -->
+    
+    <property name="src" location="src" />         
+    <property name="src-java" location="${src}/java" />
+    <property name="src-test" location="${src}/test" /> 
+    <property name="src-web" location="${src}/web" /> 
+    <property name="src-conf" location="${src}/conf" />
+    <property name="src-gui" location="${src}/gui" />
+    <property name="src-ws-client" location="${src}/ws-client" />
+    <property name="src-midp" location="${src}/midp" />
+    
+    <property name="classes" location="${build}/classes" />
+    <property name="docs" location="docs" />
+    <property name="api" location="${docs}/api" />
+    
+    <property name="test" location="${build}/test" />
+    <property name="test-reports" location="${test}/reports" />
+   	<property name="src-test-data" location="${src-test}/data" />
+    
+    <property name="cactus-lib" location="${lib-dev}/cactus" />
+    <property name="struts-lib" location="${lib}/struts" />
+    <property name="axis-lib" location="${lib}/axis" />
+    
+	<property name="swt-lib" location="${lib}/swt" />    
+	<property name="jface-lib" location="${lib}/jface" />        
+    
+    <property name="generated-dir" location="${build}/generated" />
+    <property name="generated-ejb" location="${generated-dir}/ejb-src" />        
+    <property name="generated-web" location="${generated-dir}/web-src" />                
+    <property name="descriptors-ejb" location="${generated-dir}/ejb-desc" />
+    <property name="descriptors-web" location="${generated-dir}/web-desc" /> 
+    <property name="descriptors-gui" location="${generated-dir}/gui-desc" /> 
+    <property name="gui-temp" location="${build}/gui-temp" />
+           
+    <property name="dist" location="dist" />
+    
+    <property name="wtk.home" location="c:\java\wtk-1.0.4" />
+
+    <property name="middlegen" location="${src}/middlegen" />
+    <property name="middlegen-merge" location="${middlegen}/merge" />                
+    <property name="middlegen-prefs" location="${middlegen}" />  
+    
+    <property name="checkstyle-reports" location="${docs}/checkstyle" /> 
+    <property name="checkstyle-lib" location="${lib-dev}/checkstyle" /> 
+    
+    <property name="jalopy-lib" location="${lib-dev}/jalopy" /> 
+    <property name="javancss-lib" location="${lib-dev}/javancss" />    
+    
+    <property name="server-dir"      location="${jboss.home}/server/${jboss.server}" />
+    <property name="server-lib-dir"  location="${server-dir}/lib" />
+    <property name="server-conf-dir" location="${server-dir}/conf" />             	  
+    <property name="server-client-dir"  location="${jboss.home}/client" />
+    <property name="deploy-dir"      location="${server-dir}/deploy" /> 
+    
+    <property name="metrics-reports" location="${docs}/metrics" />     
+    <property name="browseable-source" location="${docs}/browseable-source" />         
+    
+    <!-- Files -->
+    
+    <property name="ear-filename" value="${app.name}.ear" />
+    <property name="ear-file" value="${dist}/${ear-filename}" /> 
+    <property name="ejb-jar-filename" value="${app.name}-ejb.jar" />
+    <property name="ejb-jar-file" value="${dist}/${ejb-jar-filename}" /> 
+    <property name="war-filename" value="${app.name}.war" />
+    <property name="war-jar-filename" value="${app.name}-web.jar" />    
+    <property name="war-jar-file" value="${dist}/${war-jar-filename}" /> 
+    <property name="war-file" value="${dist}/${war-filename}" /> 
+    <property name="test-war-filename" value="${app.name}_test.war" />
+    <property name="test-war-file" value="${build}/${test-war-filename}" />    
+	<property name="gui-jar-filename" value="${app.name}-gui.jar" />
+	<property name="gui-jar-file" value="${dist}/${app.name}-gui.jar" />
+    <property name="midp-jar-filename" value="${app.name}-midp.jar" />	
+    <property name="midp-jar" value="${dist}/${midp-jar-filename}" />
+    
+    <property name="jad" value="${dist}/${app.name}-midp.jad" />
+    <property name="midlet-class" value="com.ejboab.tcms.midp.TCMSMidlet" />
+    <property name="build-midp" value="${build}/midp" />
+    <property name="midp-obfuscate" value="true" />
+     
+    <property name="checkstyle-xml-report-file" location="${checkstyle-reports}/checkstyle-report.xml" />     
+    <property name="checkstyle-html-report-file" location="${checkstyle-reports}/checkstyle-report.html" />         
+    <property name="checkstyle-checks-file" location="${checkstyle-lib}/sun_checks.xml" />
+    <property name="checkstyle-stylesheet" location="${checkstyle-lib}/checkstyle-noframes-sorted.xsl" />
+    
+    <property name="jalopy-convention-file" location="${jalopy-lib}/jalopy-sun-convention.xml" />
+    
+    <property name="javancss-xml-business" location="${metrics-reports}/javancss-business-tier-report.xml" />   
+    <property name="javancss-html-business" location="${metrics-reports}/javancss-business-tier-report.html" />       
+    <property name="javancss-xml-generated-business" location="${metrics-reports}/javancss-business-tier-generated-report.xml" />           
+    <property name="javancss-html-generated-business" location="${metrics-reports}/javancss-business-tier-generated-report.html" />                   
+    <property name="javancss-xml-web" location="${metrics-reports}/javancss-web-tier-report.xml" />   
+    <property name="javancss-html-web" location="${metrics-reports}/javancss-web-tier-report.html" />       
+    <property name="javancss-xml-test" location="${metrics-reports}/javancss-test-src-report.xml" />           
+    <property name="javancss-html-test" location="${metrics-reports}/javancss-test-src-report.html" />               
+    
+    <property name="javancss-stylesheet" location="${javancss-lib}/xslt/javancss2html.xsl" />    
+
+    <!-- Paths -->
+ 		
+    <path id="class.path">
+        <fileset dir="${lib}">
+            <include name="*.jar"/> 
+        </fileset>
+        <fileset dir="${struts-lib}">
+            <include name="*.jar"/> 
+        </fileset>  
+        <fileset dir="${server-lib-dir}">
+            <include name="*servlet.jar"/>          
+        </fileset>
+        <fileset dir="${server-client-dir}">        
+            <include name="jbossall-client.jar"/>            
+        </fileset>        
+    </path>   		     
+
+    <path id="xdoclet.class.path">	 
+        <path refid="class.path"/>   
+        <fileset dir="${lib-dev}/xdoclet">
+            <include name="*.jar"/>
+        </fileset>	        
+    </path>   
+    
+    <path id="checkstyle.class.path">	 
+        <path refid="class.path"/>   
+        <fileset dir="${lib-dev}/checkstyle">
+            <include name="*.jar"/>
+        </fileset>	        
+    </path>      		     
+    
+    <path id="jalopy.class.path">	 
+        <path refid="class.path"/>   
+        <fileset dir="${lib-dev}/jalopy">
+            <include name="*.jar"/>
+        </fileset>	        
+    </path>      		         
+
+    <path id="javancss.class.path">	 
+        <path refid="class.path"/>   
+        <fileset dir="${lib-dev}/javancss">
+            <include name="*.jar"/>
+        </fileset>	        
+    </path>  
+    
+    <path id="java2html.class.path">	 
+        <path refid="class.path"/>   
+        <fileset dir="${lib-dev}/java2html">
+            <include name="*.jar"/>
+        </fileset>	        
+    </path>  
+	    
+    <path id="middlegen.class.path">
+        <fileset dir="${lib-dev}/middlegen/util">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${lib-dev}/middlegen">
+            <include name="*.jar"/>
+        </fileset>
+    </path>   	    
+     
+    <path id="verifier.class.path">
+        <fileset dir="${server-lib-dir}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${jboss.home}/lib">
+            <include name="*.jar"/>
+        </fileset>
+        <pathelement location="${server-conf-dir}"/>
+    </path>
+    
+    <path id="app.class.path">
+        <pathelement location="${classes}" />
+        <path refid="class.path"/>            
+    </path>
+    
+    <path id="cactus.class.path">
+    	<fileset dir="${cactus-lib}">
+    		<include name="*.jar" />
+    	</fileset>
+	    <path refid="class.path" />
+    </path>
+
+    <path id="axis.class.path">
+    	<fileset dir="${axis-lib}">
+    		<include name="*.jar" />
+    	</fileset>
+	    <path refid="class.path" />
+    </path>
+    
+    <path id="test.class.path">
+        <pathelement location="${test}" />
+        <path refid="app.class.path" />
+        <path refid="cactus.class.path" /> 
+		<pathelement location="${global.db.driver.file}" />                   
+    </path>
+     
+    <path id="jdbc.class.path">
+        <pathelement location="${jdbc-driver-jar}" />
+    </path>
+    
+    <path id="doc.class.path">
+        <path refid="test.class.path" />        
+    </path>
+         
+    <path id="ejb.source.path">
+        <pathelement path="${src-java}"/>
+        <pathelement path="${generated-ejb}"/>       
+    </path>
+
+    <path id="gui.source.path">
+        <pathelement path="${src-gui}"/>     
+    </path>
+    
+    <path id="test.source.path">
+        <pathelement path="${src-test}" />
+    </path>
+    
+    <path id="all.source.path">
+        <path refid="test.source.path" />
+        <path refid="ejb.source.path" />
+    </path>
+    
+    <path id="gui.class.path">	 
+        <path refid="app.class.path"/>   
+        <fileset dir="${swt-lib}">
+            <include name="*.jar"/>
+        </fileset>	        
+        <fileset dir="${jface-lib}">
+            <include name="*.jar"/>
+        </fileset>	                
+    </path>      
+         
+    <!-- Patternsets -->
+     
+    <patternset id="bean.set">
+        <include name="**/*Bean.java" />
+    </patternset>
+    
+    <patternset id="non.source.set">
+        <exclude name="**/*.java" />
+        <exclude name="**/read-me.txt" />
+        <exclude name="**/package.html" />
+    </patternset>
+    
+    <patternset id="non.generated.source.set">
+        <include name="**/*.java" />
+        <exclude name="**/entities/*Bean.java" />
+    </patternset>    
+         
+    <patternset id="non.test.classes.set">
+        <include name="**/*.class" />
+        <exclude name="**/*Test.class" />
+    </patternset>
+    
+    <patternset id="entity.set">
+        <include name="**/entities/*.java"/>
+    </patternset>
+    
+    <patternset id="velocity.set">
+        <include name="**/velocity.log*"/>
+    </patternset>   	
+    
+    <patternset id="test.lib.set">
+		<include name="log4j.jar" />
+		<include name="junit.jar" />
+		<include name="commons-logging.jar" />
+		<include name="cactus*.jar" />
+		<include name="aspectj*.jar" />
+		<include name="dbunit.jar" />
+		<include name="dtdparser.jar" />
+		<include name="exml.jar" />
+    </patternset>            
+
+    <patternset id="jar.set">
+		<include name="*.jar" />
+    </patternset>            
+
+    <patternset id="ear.set">
+		<include name="${ejb-jar-filename}" />
+		<include name="${war-filename}" />		
+    </patternset>            
+     
+    <patternset id="web.classes.set">
+        <include name="**/web/**" />
+    </patternset>  
+    
+    <patternset id="ejb.classes.set">
+        <exclude name="**/web/**" />
+    </patternset>
+    
+    <patternset id="gui.classes.set">
+        <include name="**/tcms/admin/**" />
+        <include name="**/swt/**" />        
+    </patternset>    
+    
+    <patternset id="gui.images.set">
+        <include name="**/media/**/*.gif" />
+    </patternset>    
+     
+    <!-- Task Definitions -->
+    
+    <!-- XDoclet - www.xdoclet.org -->
+    <taskdef 
+        name="ejbdoclet"
+        classname="xdoclet.modules.ejb.EjbDocletTask"
+        classpathref="xdoclet.class.path"
+        />     
+    
+    <!-- DBUnit - dbunit.sourceforge.net -->
+	<taskdef 
+	    name="dbunit" 
+		classname="org.dbunit.ant.DbUnitTask"
+		classpathref="class.path"
+		/>
+
+    <!-- Checkstyle - checkstyle.sourceforge.net -->		
+    <taskdef 
+        resource="checkstyletask.properties"
+        classpathref="checkstyle.class.path"
+        />	
+        
+    <!-- Jalopy - jalopy.sourceforge.net -->
+    <taskdef 
+        name="jalopy"
+        classname="de.hunsicker.jalopy.plugin.ant.AntPlugin"
+        classpathref="jalopy.class.path"
+        />
+        
+    <!-- Javancss - kclee.com/clemens/java/javancss -->        
+	<taskdef 
+	    name="javancss"
+	    classname="javancss.JavancssAntTask"
+	    classpathref="javancss.class.path"
+	    />     
+	    
+    <!-- Java2Html - java2html.de -->	    
+    <taskdef 
+        name="java2html"
+        classname="de.java2html.anttasks.Java2HtmlTask"
+        classpathref="java2html.class.path"
+        />	       
+    
+    <!-- Antenna - antenna.sourceforge.net -->    
+    <taskdef name="wtkjad" classname="de.pleumann.antenna.WtkJad"/>
+    <taskdef name="wtkbuild" classname="de.pleumann.antenna.WtkBuild"/>
+    <taskdef name="wtkpackage" classname="de.pleumann.antenna.WtkPackage"/>
+    <taskdef name="wtkmakeprc" classname="de.pleumann.antenna.WtkMakePrc"/>
+    <taskdef name="wtkrun" classname="de.pleumann.antenna.WtkRun"/>
+    <taskdef name="wtkpreverify" classname="de.pleumann.antenna.WtkPreverify"/>
+    <taskdef name="wtkobfuscate" classname="de.pleumann.antenna.WtkObfuscate"/>
+    <taskdef name="wtksmartlink" classname="de.pleumann.antenna.WtkSmartLink"/>
+    <taskdef name="wtkpreprocess" classname="de.pleumann.antenna.WtkPreprocess"/>
+    
+    <!-- Targets -->
+
+    <!-- =================================================================== -->
+    <!-- Middlegen                                                           -->
+    <!-- =================================================================== -->    
+ 
+    <target name="middlegen" 
+        depends="middlegen-init"
+        if="middlegen.required"
+        description="Generate CMP Entity Beans."
+        >
+        <middlegen
+            appname="${app.name}"
+            prefsdir="${middlegen-prefs}"
+            gui="${mgen.gui}"
+            databaseurl="${mgen.db.url}"
+            providerURL="${java.naming.provider.url}"         	
+            driver="${mgen.db.driver}"
+            username="${mgen.db.userid}"
+            password="${mgen.db.password}"
+            >      	
+            <cmp20
+                destination="${src-java}"
+                package="${mgen.cmp.package}"
+                interfacepackage="${mgen.cmp.package}"
+                jndiprefix="ejb"
+                pkclass="false"
+                dataobject="false"
+                viewtype="local"
+                mergedir="${middlegen-merge}"
+                readonly="false"
+                fkcmp="false"
+                guid="true"
+                >         	
+                <!-- use The Sequence Block PK generation pattern -->
+                <sequenceblock
+                    blocksize="5"
+                    retrycount="2"
+                    table="SEQ_BLOCK"
+                    />
+                <jboss/>
+            </cmp20>         
+        </middlegen>              
+    </target>    
+    
+    <target name="middlegen-init" 
+            depends="middlegen-check" 
+            if="middlegen.required">
+        <!-- 
+            Typically task definitions are outside the scope of a target and get initialized
+            everytime the script is run. In this case, the middlegen tasks generate a lot of
+            unnecessary standard output when initialized. So to reduce the amount of output
+            the initialization is place here and only called when necessary.
+        -->
+        <taskdef
+            name="middlegen"
+            classname="middlegen.MiddlegenTask"
+            classpathref="middlegen.class.path"
+        />    
+        <mkdir dir="${build}"/>     
+    </target>
+    
+    <target name="middlegen-check" depends="db-middlegen-setup">
+        <!-- todo: get the this working -->
+        <condition property="middlegen.required">
+            <uptodate>
+                <srcfiles dir="${src-java}">
+                    <include name="**/entities/*.java"/>
+                </srcfiles>              
+                <srcfiles dir="${middlegen-merge}">
+                    <include name="**/*.txt"/>
+                </srcfiles>                                  
+                <!-- srcfiles dir="${src-java}" includes="**/entities/*.java" / -->              
+                <mapper type="merge" to="${build}/hsqldb/${jboss.server}.script" />
+            </uptodate>
+        </condition>
+		<property name="middlegen.required" value="true" />
+
+        <!--uptodate property="middlegen.notRequired" 
+            srcfile="${build}/hsqldb/${jboss.server}.script"
+            >
+            <mapper type="glob" 
+                from="${jboss.server}.script" 
+                to="*.java"/>
+        </uptodate-->
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Generate EJB glue files using XDoclet's ejbdoclet                   -->
+    <!-- =================================================================== -->
+   
+    <target name="xdoclet" 
+        depends="middlegen,xdoclet-init" 
+        unless="xdoclet.notRequired"
+        description="Generates code based on XDoclet tags."
+        >  
+        <ejbdoclet
+            destdir="${generated-ejb}"
+            excludedtags="@version,@author,@todo"
+            ejbspec="2.0"
+            >            
+            <fileset dir="${src-java}">
+                <patternset refid="bean.set"/>
+            </fileset>
+            <utilobject kind="physical" includeGUID="true"/>            
+            <remoteinterface/>
+            <localinterface/>
+            <homeinterface/>
+            <localhomeinterface/>
+            <valueobject/>
+            <entitycmp/>
+            <session/>
+            <entitypk/>
+            <utilobject cacheHomes="true" includeGUID="true"/>
+            <deploymentdescriptor 
+                destdir="${descriptors-ejb}" 
+                validatexml="true" 
+                />
+            <jboss 
+                version="3.0"
+                unauthenticatedPrincipal="nobody"
+                xmlencoding="UTF-8"
+                destdir="${descriptors-ejb}"
+                validatexml="true"
+                preferredrelationmapping="relation-table"
+                typemapping="${jboss.datasource.mapping}"
+                datasource="${jboss.datasource}"
+                />
+            <axisdeploy/>   
+            <axisundeploy/>
+        </ejbdoclet> 
+    </target>
+    
+    <target name="xdoclet-init">
+        <mkdir dir="${generated-ejb}" />  
+        <mkdir dir="${descriptors-ejb}" />    
+    </target>
+        
+    <target name="xdoclet-clean">
+        <delete dir="${generated-dir}" />
+        <delete>
+            <fileset dir=".">
+                <patternset refid="velocity.set" />
+            </fileset>
+        </delete>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Compiles all the classes                                            -->
+    <!-- =================================================================== -->
+  
+    <target name="compile" depends="xdoclet,format,compile-init" description="Compiles all classes.">        
+        <copy todir="${classes}">
+            <fileset dir="${src-java}">
+                <patternset refid="non.source.set" />
+            </fileset>
+        </copy>    
+        <javac
+            destdir="${classes}"
+            classpathref="class.path"
+            debug="on"
+            deprecation="on"
+            optimize="off"
+            >
+            <src>
+                <path refid="ejb.source.path" />
+            </src>
+        </javac>
+    </target>
+    
+    <target name="compile-init">
+        <mkdir dir="${classes}"/>    
+    </target>
+    
+    <target name="compile-clean">
+        <delete dir="${classes}" />
+    </target>
+    
+    <!-- =================================================================== -->
+    <!-- EJB Package                                                         -->
+    <!-- =================================================================== -->
+
+    <target name="ejb" 
+            depends="ejb-verify" 
+            description="Creates deployable EJB jar." />
+
+    <target name="ejb-package" depends="compile,dist-init">
+      <jar jarfile="${ejb-jar-file}">
+        <metainf dir="${descriptors-ejb}" includes="*.xml"/>
+        <fileset dir="${classes}">
+            <patternset refid="non.test.classes.set"/>
+            <patternset refid="ejb.classes.set"/>
+        </fileset>
+      </jar>
+    </target>
+    
+    <target name="ejb-package-clean">
+        <delete file="${ejb-jar-file}" />
+    </target>
+
+    <target name="ejb-verify" depends="ejb-package">   
+        <java
+            classname="org.jboss.verifier.Main" 
+            fork="yes"
+            failonerror="true"
+            classpathref="verifier.class.path"
+            >
+            <arg value="${ejb-jar-file}"/>
+        </java>
+    </target>
+    
+    <!-- =================================================================== -->
+    <!-- War                                                                 -->
+    <!-- =================================================================== -->
+
+    <target name="war" depends="ejb,war-jar" description="Creates a deployable war.">
+		<war destfile="${war-file}" webxml="${src-conf}/web.xml">
+			<lib dir="${struts-lib}">
+				<patternset refid="jar.set"/>
+			</lib>
+			<lib dir="${axis-lib}">
+				<patternset refid="jar.set"/>
+			</lib>
+			<lib dir="${dist}">
+				<include name="${war-jar-filename}"/>
+			</lib>			
+			<fileset dir="${src-web}"/>
+		</war>    
+    </target>
+    
+    <target name="war-jar">
+      <jar jarfile="${war-jar-file}">
+        <fileset dir="${classes}">
+            <patternset refid="web.classes.set"/>
+        </fileset>
+      </jar>    
+    </target> 
+            
+	<target name="war-clean">
+	  <delete file="${war-file}" />
+	  <delete file="${war-jar-file}" />
+	</target>
+	
+    <!-- =================================================================== -->
+    <!-- Ear                                                                 -->
+    <!-- =================================================================== -->
+
+	<target name="ear" depends="war" description="Creates a deployable ear.">
+		<ear destfile="${ear-file}" 
+			 appxml="${src-conf}/application.xml">
+			<fileset dir="${dist}">
+				<patternset refid="ear.set"/>			
+			</fileset>
+		</ear>
+	</target>
+	
+	<target name="ear-clean">
+	  <delete file="${ear-file}" />
+	</target>
+    
+    <!-- =================================================================== -->
+    <!-- Distribution                                                        -->
+    <!-- =================================================================== -->
+
+    <target name="dist" depends="dist-init,ear" description="Builds distributable versions of the application." />
+    
+    <target name="dist-init">
+        <mkdir dir="${dist}" />
+    </target>
+    
+    <target name="dist-clean">
+        <delete dir="${dist}" />
+    </target>    
+    
+    <!-- =================================================================== -->
+    <!-- Deploy - Deploys the Jar to server                                  -->
+    <!-- =================================================================== -->    
+ 
+    <target name="deploy" depends="ear" description="Deploys EJB Jar.">
+        <copy
+            file="${ear-file}"
+            todir="${deploy-dir}"
+            />
+    </target>
+    
+    <target name="undeploy" description="Undeploys EJB Jar.">
+        <delete file="${deploy-dir}/${ear-filename}" />
+    </target>
+    
+    <!-- =================================================================== -->
+    <!-- MIDP Client                                                         -->
+    <!-- =================================================================== -->
+    
+  <target name="compile-midp" depends="compile-init-midp" description="Compiles Craftsperson J2ME code">
+    <wtkbuild srcdir="${src-midp}"
+              destdir="${build-midp}"
+              preverify="false"/>
+    <copy todir="${build-midp}">
+      <fileset dir="${src-midp}">
+        <patternset refid="non.source.set"/>
+      </fileset>
+    </copy>
+  </target>
+    
+    
+  <target name="jad" description="Creates a J2ME jad files">
+    <wtkjad jadfile="${jad}"
+            name="${app.name}"
+            vendor="${app.name}"
+            version="1.0">
+      <midlet name="${app.name}"
+              icon=""
+              class="${midlet-class}"/>
+    </wtkjad>
+  </target>
+
+
+  <target name="jar-midp" depends="compile-midp,jad" description="Creates a J2ME deployable jar file">
+    <wtkpackage jarfile="${midp-jar}"
+                jadfile="${jad}"
+                obfuscate="${midp-obfuscate}"
+                autoversion="false">
+      <fileset dir="${build-midp}"/>
+    </wtkpackage>
+    <wtkpreverify jarfile="${midp-jar}"
+                  jadfile="${jad}"/>
+  </target>
+
+  <target name="clean-midp">
+    <delete file="${midp-jar}" />
+    <delete file="${jad}" />
+  </target>
+  
+  <target name="compile-init-midp">
+    <mkdir dir="${build-midp}" />
+  </target>
+  
+        
+    
+    <!-- =================================================================== -->
+    <!-- Testing                                                             -->
+    <!-- =================================================================== -->
+    
+    <target name="test" 
+    	depends="deploy,test-properties,test-compile,test-run" 
+    	description="Executes unit tests." />
+
+    <target name="test-run" depends="test-deploy">
+        <junit printsummary="on">
+            <classpath>
+                <path refid="test.class.path"/>
+            </classpath>
+            <formatter type="xml"/>
+            <batchtest fork="yes" todir="${test-reports}">
+                <fileset dir="${src-test}">
+                    <include name="**/*Test*.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+        <junitreport todir="${test-reports}">
+            <fileset dir="${test-reports}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${test-reports}"/>
+        </junitreport>    
+    </target>
+    
+    <target name="test-deploy" depends="test-war">
+        <copy
+            file="${test-war-file}"
+            todir="${deploy-dir}"
+            />    	
+    </target>
+    
+    <target name="test-war" depends="test-compile">
+		<war destfile="${test-war-file}" webxml="${test}/WEB-INF/web.xml">
+			<lib dir="${lib}">
+				<patternset refid="test.lib.set"/>
+			</lib>
+			<classes dir="${test}"/>
+		</war>    
+    </target>    
+
+    <target name="test-properties" depends="test-init">
+		<concat destfile="${test}/db.properties">
+		  db.url=${global.db.url}
+		  db.driver=${global.db.driver}
+		  db.user=${global.db.userid}
+		  db.password=${global.db.password}
+		</concat>
+    </target>
+    
+    <target name="test-compile" depends="test-init">
+        <copy todir="${test}">
+            <fileset dir="${src-test}">
+                <patternset refid="non.source.set" />
+            </fileset>
+        </copy>
+        <javac
+            destdir="${test}"
+            classpathref="test.class.path"
+            debug="on"
+            deprecation="on"
+            optimize="off"
+            >
+            <src>
+                <path refid="test.source.path" />
+            </src>
+        </javac>    
+    </target>
+        
+    <target name="test-init">
+        <mkdir dir="${test}" />
+        <mkdir dir="${test-reports}" />
+    </target>
+    
+    <target name="test-clean">
+        <delete dir="${test}" />
+        <delete file="${test-war-file}" />
+    </target>
+    
+    <target name="test-undeploy">
+        <delete file="${deploy-dir}/${test-war-filename}" />
+    </target>    
+    
+    <target name="export">
+		<dbunit 
+			driver="${global.db.driver}"          
+			url="${global.db.url}"          
+			userid="${global.db.userid}"          
+			password="${global.db.password}">    
+			<export dest="${src-test-data}/exportFile.xml" format="xml" />
+			<classpath>
+				<path refid="test.class.path" />
+			</classpath>  
+		</dbunit>    
+    </target>    
+    
+    <!-- =================================================================== -->
+    <!-- Setup the database - file based db for Middlegen Purposes           -->
+    <!-- =================================================================== -->
+ 
+    <target name="db-middlegen-setup" 
+        depends="db-middlegen-check" 
+        unless="db-middlegen.notRequired" 
+        description="Sets up database for Middlegen."
+        >
+        <antcall target="db-setup">
+      	      <param name="db.url" value="${mgen.db.url}"/>
+      	      <param name="db.userid" value="${mgen.db.userid}"/>
+      	      <param name="db.password" value="${mgen.db.password}"/>
+      	      <param name="db.driver" value="${mgen.db.driver}"/>
+      	      <param name="jdbc-driver-jar" value="${mgen.db.driver.file}"/>
+        </antcall>
+    </target>
+    
+    <target name="db-middlegen-clean">
+        <delete dir="${build}/${database.type}" />
+    </target>
+    
+    <target name="db-middlegen-check">
+        <uptodate property="db-middlegen.notRequired" 
+            srcfile="setup/db/${database.type}/${app.name}-create.sql"
+            targetfile="${build}/hsqldb/${jboss.server}.script" 
+            >
+        </uptodate>                       
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Setup the database - runtime db under JBoss                         -->
+    <!-- =================================================================== -->
+
+    <target name="db-runtime-setup" description="Sets up runtime database.">
+        <antcall target="db-setup">
+            <param name="db.url" value="${global.db.url}"/>
+            <param name="db.userid" value="${global.db.userid}"/>
+            <param name="db.password" value="${global.db.password}"/>
+            <param name="db.driver" value="${global.db.driver}"/>
+            <param name="jdbc-driver-jar" value="${global.db.driver.file}"/>
+        </antcall>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Setup the database                                                  -->
+    <!-- gets called from db-setup-middlegen, db-setup-runtime               -->
+    <!-- =================================================================== -->
+ 
+    <target name="db-setup">
+        <sql
+            src="setup/db/${database.type}/${app.name}-drop.sql"
+            url="${db.url}"
+            userid="${db.userid}"
+            password="${db.password}"
+            driver="${db.driver}"
+            print="yes"
+            onerror="continue"
+            >
+            <classpath>
+                <path refid="jdbc.class.path" />
+            </classpath>
+        </sql>
+        <sql
+            src="setup/db/${database.type}/${app.name}-create.sql"
+            url="${db.url}"
+            userid="${db.userid}"
+            password="${db.password}"
+            driver="${db.driver}"
+            print="yes"
+            >
+            <classpath>
+                <path refid="jdbc.class.path" />
+            </classpath>
+        </sql>
+        <sql
+            src="setup/db/${database.type}/${app.name}-populate.sql"
+            url="${db.url}"
+            userid="${db.userid}"
+            password="${db.password}"
+            driver="${db.driver}"
+            print="yes"
+            >
+            <classpath>
+                <path refid="jdbc.class.path" />
+            </classpath>
+        </sql>
+    </target>
+    
+    <!-- =================================================================== -->
+    <!-- JavaDocs                                                            -->
+    <!-- =================================================================== -->
+    
+    <target name="docs" depends="dist,docs-init" description="Generate JavaDocs.">   
+        <javadoc 
+            destdir="${api}"
+            author="true"
+            version="true"
+            use="true"
+            windowtitle="${ant.project.name}"
+            sourcepathref="all.source.path"
+            classpathref="doc.class.path"
+            packagenames="com.*"
+            Verbose="false">
+            <doctitle><![CDATA[<h1>${ant.project.name}</h1>]]></doctitle>
+            <bottom><![CDATA[<i>Copyright &#169; 2003 All Rights Reserved.</i>]]></bottom>
+            <tag name="todo" scope="all" description="To do:" />
+        </javadoc>  
+    </target>  
+    
+    <target name="docs-init">
+        <mkdir dir="${api}" />        
+    </target>
+    
+    <target name="docs-clean">
+        <delete dir="${api}" />
+    </target>
+    
+    <!-- =================================================================== -->
+    <!-- Formats all non-generated source code                               -->    
+    <!-- =================================================================== -->
+
+    <target name="format" description="Formats all source code.">
+        <jalopy 
+            convention="${jalopy-convention-file}"
+            loglevel="warn"
+            history="file"
+            historymethod="adler32"
+            classpathref="class.path">
+            <fileset dir="${src-java}" >
+                <patternset refid="non.generated.source.set"/>
+            </fileset>            
+            <fileset dir="${src-test}" >
+                <patternset refid="non.generated.source.set"/>
+            </fileset> 
+        </jalopy>
+    </target>   
+    
+    <!-- =================================================================== -->
+    <!-- Generates browseable source code in HTML format                     -->    
+    <!-- =================================================================== -->
+	<target name="java2html" depends="java2html-init" 
+	    description="Generates browseable HTML version of the source code." >
+        <java2html
+            srcdir="${src}"
+            destdir="${browseable-source}"
+            includes="**/*.java"
+            outputFormat="html"
+            tabs="4"
+            style="eclipse"
+            showLineNumbers="true"
+            showFileName="true"
+            showTableBorder="true"
+            includeDocumentHeader="true"
+            includeDocumentFooter="true"
+            addLineAnchors="true"
+            lineAnchorPrefix="fff"
+            />	    
+    </target>	
+    
+    <target name="java2html-init">
+        <mkdir dir="${browseable-source}" />        
+    </target>
+    
+    <target name="java2html-clean">
+        <delete dir="${browseable-source}" />
+    </target>                    
+    
+    <!-- =================================================================== -->
+    <!-- Checks source code for convention violations                        -->
+    <!-- =================================================================== -->
+    
+    <target name="checkstyle" depends="checkstyle-init"
+        description="Generates Code Convention Violations Report."
+        >
+        
+        <checkstyle 
+            config="${checkstyle-checks-file}"
+            failureProperty="checkstyle.failure"
+            failOnViolation="false"
+            >
+            <formatter type="xml" tofile="${checkstyle-xml-report-file}"/>
+            <fileset dir="${src-java}" >
+                <patternset refid="non.generated.source.set"/>
+            </fileset>            
+            <fileset dir="${src-test}" >
+                <patternset refid="non.generated.source.set"/>
+            </fileset> 
+        </checkstyle>
+
+        <style 
+            in="${checkstyle-xml-report-file}" 
+            out="${checkstyle-html-report-file}" 
+            style="${checkstyle-stylesheet}"
+            />
+    </target>
+   
+    <target name="checkstyle-init">
+        <mkdir dir="${checkstyle-reports}" />        
+    </target>
+    
+    <target name="checkstyle-clean">
+        <delete dir="${checkstyle-reports}" />
+    </target>   
+    
+    <!-- =================================================================== -->
+    <!-- Source Code Metrics                                                 -->
+    <!-- =================================================================== -->
+
+	<target name="metrics" depends="metrics-init"
+	    description="Generates Code Metrics Reports."
+	    >
+
+		<!-- business tier source metrics -->
+		<javancss
+			srcdir="${src-java}"
+			includes="**/*.java"
+			excludes="**/entities/*Bean.java"
+    		generateReport="true"
+            outputfile="${javancss-xml-business}"
+            format="xml"
+            functionMetrics="false"
+    	    />
+
+    	<style
+    		in="${javancss-xml-business}"
+    		out="${javancss-html-business}"
+    		style="${javancss-stylesheet}"    		
+    	    />
+
+		<!-- business tier generated source metrics -->
+		<javancss
+			srcdir="${src-java}"
+			includes="**/entities/*Bean.java"
+    		generateReport="true"
+            outputfile="${javancss-xml-generated-business}"
+            format="xml"
+            functionMetrics="false"
+    	    />
+
+    	<style
+    		in="${javancss-xml-generated-business}"
+    		out="${javancss-html-generated-business}"
+    		style="${javancss-stylesheet}"    		
+    	    />
+
+		<!-- gui source metrics -->
+		<javancss
+			srcdir="${src-gui}"
+			includes="**/*.java"
+    		generateReport="true"
+            outputfile="${javancss-gui-business}"
+            format="xml"
+            functionMetrics="false"
+    	    />
+
+    	<style
+    		in="${javancss-xml-gui}"
+    		out="${javancss-html-gui}"
+    		style="${javancss-stylesheet}"    		
+    	    />
+
+		<!-- testing sources metrics -->
+		<javancss
+			srcdir="${src-test}"
+			includes="**/*.java"
+    		generateReport="true"
+            outputfile="${javancss-xml-test}"
+            format="xml"
+            functionMetrics="false"
+    	    />
+
+    	<style
+    		in="${javancss-xml-test}"
+    		out="${javancss-html-test}"
+    		style="${javancss-stylesheet}"    		
+    	    />    	    
+	</target>   
+	
+    <target name="metrics-init">
+        <mkdir dir="${metrics-reports}" />        
+    </target>
+
+    <target name="metrics-clean">
+        <delete dir="${metrics-reports}" />
+    </target>
+    
+    <!-- =================================================================== -->
+    <!-- Compiles Web Services client                                        -->
+    <!-- =================================================================== -->
+
+    <target name="compile-ws-client" description="Compiles all Web Services client classes.">
+        <copy todir="${classes}">
+            <fileset dir="${src-ws-client}">
+                <patternset refid="non.source.set" />
+            </fileset>
+        </copy>    
+        <javac
+            destdir="${classes}"
+            classpathref="axis.class.path"
+            debug="on"
+            deprecation="on"
+            optimize="off"
+            srcdir="${src-ws-client}"
+            />
+    </target>
+        
+    <!-- =================================================================== -->
+    <!-- Run the GUI application                                            -->
+    <!-- =================================================================== -->
+
+	<target name="run-ws-client" depends="compile-ws-client" description="executes the Web Services client application" >
+		<java
+		    classname="com.ejdoab.tcms.NewsClient"		    
+		    fork="true"
+		>
+            <classpath>
+                <path refid="axis.class.path" />
+                <path refid="app.class.path" />
+            </classpath>		
+		</java>
+    </target>  
+
+    
+    <!-- =================================================================== -->
+    <!-- Compiles GUI application classes                                    -->
+    <!-- =================================================================== -->
+  
+    <target name="compile-gui" depends="compile-gui-init" description="Compiles all gui classes.">        
+        <copy todir="${classes}">
+            <fileset dir="${src-gui}">
+                <patternset refid="non.source.set" />
+            </fileset>
+        </copy>    
+        <javac
+            destdir="${classes}"
+            classpathref="gui.class.path"
+            debug="on"
+            deprecation="on"
+            optimize="off"
+            >
+            <src>
+                <path refid="gui.source.path" />
+            </src>
+        </javac>
+    </target>
+    
+    <target name="compile-gui-init">        
+    </target>
+    
+    <target name="compile-gui-clean">        
+    </target>  
+    
+    <!-- =================================================================== -->
+    <!-- Run the GUI application                                            -->
+    <!-- =================================================================== -->
+
+	<target name="gui-run" depends="compile-gui" description="executes the gui application" >
+		<java
+		    classname="com.ejdoab.tcms.admin.TCMSAdmin"		    
+		    fork="true"
+		>
+            <classpath>
+                <path refid="gui.class.path" />
+            </classpath>		
+			<jvmarg value="-Djava.library.path=${swt-lib}"/> 
+		</java>
+    </target>  
+    
+    <!-- =================================================================== -->
+    <!-- Cleans everything                                                   -->
+    <!-- =================================================================== -->
+
+    <target name="clean" 
+        depends="compile-clean,xdoclet-clean,dist-clean,db-middlegen-clean,test-clean,war-clean" 
+        description="Cleans all generated source, classes and distributable applications." 
+        >
+        <delete dir="${build}" />
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Does it all                                                         -->
+    <!-- =================================================================== -->
+
+    <target name="all" 
+    	depends="dist,deploy" 
+    	description="Generates, compiles, packages and deploys." 
+    	/>
+    
+</project>

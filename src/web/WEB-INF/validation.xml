@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.0//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_0.dtd">
+
+<form-validation>
+  <formset>
+    <form name="registrationForm">
+      <field property="firstname"
+             depends="required">
+        <arg0 key="firstname.label"/>
+      </field>      
+      <field property="lastname"
+             depends="required">
+        <arg0 key="lastname.label"/>
+      </field>      
+      <field property="email"
+             depends="required,email">
+        <arg0 key="email.label"/>
+      </field>
+      <field property="password"
+             depends="required">
+        <arg0 key="password.label"/>
+      </field>      
+      <field property="street"
+             depends="required">
+        <arg0 key="street.label"/>
+      </field>
+      <field property="city"
+             depends="required">
+        <arg0 key="city.label"/>
+      </field>            
+      <field property="state"
+             depends="required">
+        <arg0 key="state.label"/>
+      </field>            
+      <field property="zip"
+             depends="required">
+        <arg0 key="zip.label"/>
+      </field>            
+    </form>
+  
+    <form name="attendeeForm">
+      <field property="firstname"
+             depends="required">
+        <arg0 key="firstname.label"/>
+      </field>      
+      <field property="lastname"
+             depends="required">
+        <arg0 key="lastname.label"/>
+      </field>      
+      <field property="email"
+             depends="required,email">
+        <arg0 key="email.label"/>
+      </field>
+      <field property="password"
+             depends="required">
+        <arg0 key="password.label"/>
+      </field>      
+      <field property="street"
+             depends="required">
+        <arg0 key="street.label"/>
+      </field>
+      <field property="city"
+             depends="required">
+        <arg0 key="city.label"/>
+      </field>            
+      <field property="state"
+             depends="required">
+        <arg0 key="state.label"/>
+      </field>            
+      <field property="zip"
+             depends="required">
+        <arg0 key="zip.label"/>
+      </field>            
+    </form>
+  </formset>      
+</form-validation>
+      

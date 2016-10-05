@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <table name='ABSTRACTS'>
+    <column>TITLE</column>
+    <column>TYPE</column>
+    <column>TOPIC</column>
+    <column>LEVEL</column>
+    <column>BODY</column>
+    <column>STATUS</column>
+    <column>FK_PRESENTERID</column>
+    <row>
+      <value><![CDATA[Generics in JavaTM]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Generic types are slated for incorporation into the JavaTM programming language in JDKTM 1.5 release. In this talk, we highlight key features of the generics extension and discuss tradeoffs between functionality, compatibility, and performance.]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[Advanced RMI]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Tricks, strategies, and idioms that JavaTM Remote Method Invocation (Java RMI) programmers use in the field to achieve high performance and reliability.]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[1]]></value>
+    </row>
+    <row>
+      <value><![CDATA[JCP]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[The JCP services defines a process of proposing, developing, and maintaining new Java technology standards.]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[Concurrency Utilities]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Many programs become clearer, shorter, faster, easier to write, and more reliable if, instead of starting from scratch, you use higher-level synchronization and coordination constructs.]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[1]]></value>
+    </row>
+    <row>
+      <value><![CDATA[Five Secrets to Faster Code]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[This session explores ways to ensure that your code performs at its peak with real-world lessons]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[Performance Tuning J2EE]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[A scalable and extensible framework in which JavaTM technology performance tuning can be automated for enterprise applications.]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[1]]></value>
+    </row>
+    <row>
+      <value><![CDATA[Open Source J2EE Gems]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Reviews the most prominent Open Source J2EE Tools]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[Logging with Log4J]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Efficient logging in J2EE with Log4J]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[1]]></value>
+    </row>
+    <row>
+      <value><![CDATA[Struts 101]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Building the Web Tier with Struts]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[Middlegen]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[CMP Entity Bean generation with Middlegen]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[1]]></value>
+    </row>
+    <row>
+      <value><![CDATA[J2EE Testing with Cactus]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[In-server Testing techniques with Cactus]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[The future of Java]]></value>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[5]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[A panel of experts discuss the future of the Java platform]]></value>
+      <value><![CDATA[-1]]></value>
+      <value><![CDATA[0]]></value>
+    </row>
+  </table>
+</dataset>

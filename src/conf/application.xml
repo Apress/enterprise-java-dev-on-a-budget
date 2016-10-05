@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<application>
+ <display-name>TCMS Application</display-name>
+ <module>
+  <web>
+   <web-uri>tcms.war</web-uri>
+   <context-root>tcms</context-root>
+  </web>
+ </module>
+ <module>
+  <ejb>tcms-ejb.jar</ejb>
+ </module>
+</application>

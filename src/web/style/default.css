@@ -1,0 +1,56 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	background : white;	
+	color: #336699;
+	scrollbar-3dlight-color : #999999;
+	scrollbar-arrow-color : #999999;
+	scrollbar-base-color : #666666;
+	scrollbar-darkshadow-color : Black;
+	scrollbar-face-color : #666666;
+	scrollbar-highlight-color : #999999;
+	scrollbar-shadow-color : #999999;
+	scrollbar-track-color : #8B8B8B;		
+}
+
+td, th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+}
+
+a {
+	color: #3366CC;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.menu {
+	color: silver;
+	background-color : #696969;
+	text-decoration : none;
+	padding: 5px;
+	vertical-align: top;
+}
+
+.menuItem {
+    color: silver;
+	font-weight : bolder;
+	text-decoration : none;
+}
+
+.copyright {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 9px;
+	text-align: center;
+	font-weight: normal;
+	color: #000000;
+}
+
+.content {
+	text-align: left;
+	vertical-align: top;
+}

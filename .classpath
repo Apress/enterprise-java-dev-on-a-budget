@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+    <classpathentry kind="src" path="src/test"/>
+    <classpathentry kind="src" path="src/java"/>
+    <classpathentry kind="src" path="src/middlegen"/>
+    <classpathentry kind="src" path="build/generated/ejb-src"/>
+    <classpathentry kind="src" path="src/ws-client"/>
+    <classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+    <classpathentry exported="true" kind="lib" path="lib/junit.jar"/>
+    <classpathentry kind="lib" path="lib/aspectjrt-1.0.5.jar"/>
+    <classpathentry kind="lib" path="lib/cactus-1.4.1.jar"/>
+    <classpathentry kind="lib" path="lib/commons-io.jar"/>
+    <classpathentry kind="lib" path="lib/commons-logging.jar"/>
+    <classpathentry kind="lib" path="lib/commons-validator.jar"/>
+    <classpathentry kind="lib" path="lib/dbunit.jar"/>
+    <classpathentry kind="lib" path="lib/dtdparser.jar"/>
+    <classpathentry kind="lib" path="lib/exml.jar"/>
+    <classpathentry kind="lib" path="lib/log4j.jar"/>
+    <classpathentry kind="lib" path="lib/struts/struts.jar"/>
+    <classpathentry kind="lib" path="F:/java/jboss-3.2.2/server/all/lib/javax.servlet.jar"/>
+    <classpathentry kind="lib" path="lib/development/cactus/cactus-ant-1.4.1.jar"/>
+    <classpathentry kind="lib" path="lib/development/cactus/commons-httpclient-2.0alpha1-20020606.jar"/>
+    <classpathentry kind="lib" path="lib/development/cactus/httpunit-1.4.1.jar"/>
+    <classpathentry kind="lib" path="lib/struts/commons-beanutils.jar"/>
+    <classpathentry kind="lib" path="F:/java/jboss-3.2.2/server/all/lib/hsqldb.jar"/>
+    <classpathentry kind="lib" path="F:/java/jboss-3.2.1/client/jbossall-client.jar"/>
+    <classpathentry kind="lib" path="F:/java/jboss-3.2.1/server/tcms/lib/jboss.jar"/>
+    <classpathentry kind="lib" path="lib/axis/axis.jar"/>
+    <classpathentry kind="lib" path="lib/axis/commons-discovery.jar"/>
+    <classpathentry kind="lib" path="lib/axis/jaxrpc.jar"/>
+    <classpathentry kind="lib" path="lib/axis/saaj.jar"/>
+    <classpathentry kind="lib" path="lib/axis/wsdl4j.jar"/>
+    <classpathentry kind="output" path="build/classes"/>
+</classpath>

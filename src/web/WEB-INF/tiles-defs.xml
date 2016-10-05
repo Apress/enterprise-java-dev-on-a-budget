@@ -1,0 +1,52 @@
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+<tiles-definitions>
+
+  <!-- =======================================================  -->
+  <!-- Master definition  									-->
+  <!-- =======================================================  -->
+
+  <!-- Master index page description  -->
+
+  <definition name="master" path="/WEB-INF/jsp/layout/masterLayout.jsp">
+	  <put name="title" value="Technical Conference Management System" />
+	  <put name="header" value="/WEB-INF/jsp/tiles/header.jsp" />
+	  <put name="menu" value="/WEB-INF/jsp/tiles/menu.jsp" />
+	  <put name="footer" value="/WEB-INF/jsp/tiles/footer.jsp" />
+	  <put name="body" value="" />
+  </definition>
+
+  <!-- Page Descriptions -->
+
+  <definition name="index" extends="master">
+	  <put name="body" value="/WEB-INF/jsp/index.jsp" />
+  </definition>
+
+  <definition name="sessions" extends="master">
+	  <put name="body" value="/WEB-INF/jsp/sessions.jsp" />
+  </definition>
+
+  <definition name="speakers" extends="master">
+	  <put name="body" value="/WEB-INF/jsp/speakers.jsp" />
+  </definition>
+
+  <definition name="call" extends="master">
+	  <put name="body" value="/WEB-INF/jsp/call.jsp" />
+  </definition>
+
+  <definition name="registration" extends="master">
+	  <put name="body" value="/WEB-INF/jsp/registration.jsp" />
+  </definition>  
+
+  <definition name="registrationThanks" extends="master">
+    <put name="body" value="/WEB-INF/jsp/speakerThanks.jsp" />
+  </definition>
+
+  <definition name="speakerThanks" extends="master">
+    <put name="body" value="/WEB-INF/jsp/speakerThanks.jsp" />
+  </definition>
+
+  <definition name="sessionsByPresenter" extends="master">
+	  <put name="body" value="/WEB-INF/jsp/sessionsByPresenters.jsp" />
+  </definition>
+
+</tiles-definitions>

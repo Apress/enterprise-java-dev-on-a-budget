@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <table name='USERS'>
+    <column>PASSWORD</column>
+    <column>FIRSTNAME</column>
+    <column>LASTNAME</column>
+    <column>EMAIL</column>
+    <column>HOMEPHONE</column>
+    <column>WORKPHONE</column>
+    <column>FAX</column>
+    <row>
+      <value><![CDATA[pswd]]></value>
+      <value><![CDATA[Anne]]></value>
+      <value><![CDATA[Sam]]></value>
+      <value><![CDATA[aks@isllc.com]]></value>
+      <value><![CDATA[555.5777]]></value>
+      <value><![CDATA[555.5919]]></value>
+      <value><![CDATA[]]></value>
+    </row>
+    <row>
+      <value><![CDATA[pswd]]></value>
+      <value><![CDATA[Sue]]></value>
+      <value><![CDATA[Judd]]></value>
+      <value><![CDATA[sjudd@jsllc.com]]></value>
+      <value><![CDATA[555.4119]]></value>
+      <value><![CDATA[555.4119]]></value>
+      <value><![CDATA[]]></value>
+    </row>
+    <row>
+      <value><![CDATA[pswd]]></value>
+      <value><![CDATA[Brian]]></value>
+      <value><![CDATA[Sam-Bodden]]></value>
+      <value><![CDATA[bsb@isllc.com]]></value>
+      <value><![CDATA[555.0154]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[]]></value>
+    </row>
+    <row>
+      <value><![CDATA[pswd]]></value>
+      <value><![CDATA[Christopher]]></value>
+      <value><![CDATA[Judd]]></value>
+      <value><![CDATA[cjudd@js.com]]></value>
+      <value><![CDATA[555.4119]]></value>
+      <value><![CDATA[555.4119]]></value>
+      <value><![CDATA[]]></value>
+    </row>
+    <row>
+      <value><![CDATA[edf]]></value>
+      <value><![CDATA[Bill]]></value>
+      <value><![CDATA[Gates]]></value>
+      <value><![CDATA[billy@ms.com]]></value>
+      <value><![CDATA[555.523.6661]]></value>
+      <value><![CDATA[555.523.6662]]></value>
+      <value><![CDATA[555.523.6663]]></value>
+    </row>
+  </table>
+</dataset>

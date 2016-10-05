@@ -1,0 +1,2 @@
+Directory: setup
+Contents: location of app server and db configuration files.

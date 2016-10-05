@@ -1,0 +1,849 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <table name='QUESTIONS'>
+    <column>PK_ID</column>
+    <column>QUESTIONTEXT</column>
+    <column>QUESTIONTYPE</column>
+    <column>QUESTIONCHOICES</column>
+  </table>
+  <table name='SEQ_BLOCK'>
+    <column>NAME</column>
+    <column>IDX</column>
+    <row>
+      <value><![CDATA[ADDRESSES.PK_ID]]></value>
+      <value><![CDATA[75]]></value>
+    </row>
+    <row>
+      <value><![CDATA[ABSTRACTS.PK_ID]]></value>
+      <value><![CDATA[10]]></value>
+    </row>
+  </table>
+  <table name='REGISTRATIONDATEPRICINGRULES'>
+    <column>PK_PRICINGMODEL</column>
+    <column>STARTDATE</column>
+    <column>ENDDATE</column>
+    <column>PRICE</column>
+    <row>
+      <value><![CDATA[Early Bird]]></value>
+      <value><![CDATA[2004-01-01 00:00:00.0]]></value>
+      <value><![CDATA[2004-02-01 00:00:00.0]]></value>
+      <value><![CDATA[1850.0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[On-site]]></value>
+      <value><![CDATA[2004-03-02 00:00:00.0]]></value>
+      <value><![CDATA[2004-04-01 00:00:00.0]]></value>
+      <value><![CDATA[2000.0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[Pre-Registration]]></value>
+      <value><![CDATA[2004-02-02 00:00:00.0]]></value>
+      <value><![CDATA[2004-03-01 00:00:00.0]]></value>
+      <value><![CDATA[1975.0]]></value>
+    </row>
+  </table>
+  <table name='ROLES'>
+    <column>PK_ID</column>
+    <column>ROLENAME</column>
+    <column>DESCRIPTION</column>
+    <row>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[ATTENDEE]]></value>
+      <value><![CDATA[Attendees]]></value>
+    </row>
+    <row>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[PRESENTER]]></value>
+      <value><![CDATA[Presenters]]></value>
+    </row>
+  </table>
+  <table name='GROUPPRICINGRULES'>
+    <column>PK_RULENAME</column>
+    <column>MINIMUMATTENDEES</column>
+    <column>MAXIMUMATTENDEES</column>
+    <column>DISCOUNTPERATTENDEE</column>
+    <row>
+      <value><![CDATA[10to20]]></value>
+      <value><![CDATA[10]]></value>
+      <value><![CDATA[20]]></value>
+      <value><![CDATA[100.0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[20orMore]]></value>
+      <value><![CDATA[20]]></value>
+      <value><![CDATA[10000]]></value>
+      <value><![CDATA[200.0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[5to10]]></value>
+      <value><![CDATA[5]]></value>
+      <value><![CDATA[10]]></value>
+      <value><![CDATA[50.0]]></value>
+    </row>
+  </table>
+  <table name='PRESENTATIONLEVELS'>
+    <column>PK_ID</column>
+    <column>NAME</column>
+    <column>DESCRIPTION</column>
+    <row>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Beginner]]></value>
+      <value><![CDATA[For Greenhorns]]></value>
+    </row>
+    <row>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[Intermediate]]></value>
+      <value><![CDATA[For those who make a living out of it]]></value>
+    </row>
+    <row>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[Advanced]]></value>
+      <value><![CDATA[For Gurus]]></value>
+    </row>
+  </table>
+  <table name='QUESTIONNAIRES'>
+    <column>PK_ID</column>
+    <column>FK_QUESTIONID</column>
+    <column>FK_PRESENTATIONID</column>
+  </table>
+  <table name='ADDRESSES'>
+    <column>PK_ID</column>
+    <column>STREETADDRESS</column>
+    <column>APTNUMBER</column>
+    <column>CITY</column>
+    <column>STATE</column>
+    <column>ZIPCODE</column>
+    <row>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[747 Howard Street]]></value>
+      <null/>
+      <value><![CDATA[San Francisco]]></value>
+      <value><![CDATA[CA]]></value>
+      <value><![CDATA[94103]]></value>
+    </row>
+    <row>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[204 Bluestone Ct.]]></value>
+      <null/>
+      <value><![CDATA[Westerville]]></value>
+      <value><![CDATA[OH]]></value>
+      <value><![CDATA[43081]]></value>
+    </row>
+    <row>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[685 Farrington Drive]]></value>
+      <null/>
+      <value><![CDATA[Worthington]]></value>
+      <value><![CDATA[OH]]></value>
+      <value><![CDATA[43085]]></value>
+    </row>
+    <row>
+      <value><![CDATA[3]]></value>
+      <value><![CDATA[204 Bluestone Ct.]]></value>
+      <null/>
+      <value><![CDATA[Westerville]]></value>
+      <value><![CDATA[OH]]></value>
+      <value><![CDATA[43081]]></value>
+    </row>
+    <row>
+      <value><![CDATA[4]]></value>
+      <value><![CDATA[685 Farrington Drive]]></value>
+      <null/>
+      <value><![CDATA[Worthington]]></value>
+      <value><![CDATA[OH]]></value>
+      <value><![CDATA[43085]]></value>
+    </row>
+  </table>
+  <table name='PRESENTATIONTYPES'>
+    <column>PK_ID</column>
+    <column>NAME</column>
+    <column>DESCRIPTION</column>
+    <row>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[REGULAR]]></value>
+      <value><![CDATA[Regular Session]]></value>
+    </row>
+    <row>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[TUTORIAL]]></value>
+      <value><![CDATA[Preconference Tutorial]]></value>
+    </row>
+    <row>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[PANEL]]></value>
+      <value><![CDATA[Panel Discussion]]></value>
+    </row>
+    <row>
+      <value><![CDATA[3]]></value>
+      <value><![CDATA[CASE]]></value>
+      <value><![CDATA[Case Study]]></value>
+    </row>
+    <row>
+      <value><![CDATA[4]]></value>
+      <value><![CDATA[KEYNOTE]]></value>
+      <value><![CDATA[Keynote]]></value>
+    </row>
+    <row>
+      <value><![CDATA[5]]></value>
+      <value><![CDATA[BOF]]></value>
+      <value><![CDATA[Birds of a Feather]]></value>
+    </row>
+  </table>
+  <table name='VENUES'>
+    <column>PK_ID</column>
+    <column>FK_ADDRESSID</column>
+    <column>NAME</column>
+    <column>PHONE</column>
+    <column>FAX</column>
+    <row>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[The Moscone Center]]></value>
+      <value><![CDATA[415.974.4000]]></value>
+      <value><![CDATA[415.974.4073]]></value>
+    </row>
+  </table>
+  <table name='ABSTRACTSTATUS'>
+    <column>PK_ID</column>
+    <column>NAME</column>
+    <row>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[IN-REVIEW]]></value>
+    </row>
+    <row>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[ACCEPTED]]></value>
+    </row>
+    <row>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[REJECTED]]></value>
+    </row>
+  </table>
+  <table name='USERS'>
+    <column>PK_ID</column>
+    <column>PASSWORD</column>
+    <column>FIRSTNAME</column>
+    <column>LASTNAME</column>
+    <column>EMAIL</column>
+    <column>HOMEPHONE</column>
+    <column>WORKPHONE</column>
+    <column>FAX</column>
+    <column>FK_ADDRESSID</column>
+    <row>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[pswd]]></value>
+      <value><![CDATA[Anne]]></value>
+      <value><![CDATA[Sam]]></value>
+      <value><![CDATA[aks@isllc.com]]></value>
+      <value><![CDATA[555.5777]]></value>
+      <value><![CDATA[555.5919]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[1]]></value>
+    </row>
+    <row>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[pswd]]></value>
+      <value><![CDATA[Sue]]></value>
+      <value><![CDATA[Judd]]></value>
+      <value><![CDATA[sjudd@jsllc.com]]></value>
+      <value><![CDATA[555.4119]]></value>
+      <value><![CDATA[555.4119]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[2]]></value>
+    </row>
+    <row>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[pswd]]></value>
+      <value><![CDATA[Brian]]></value>
+      <value><![CDATA[Sam-Bodden]]></value>
+      <value><![CDATA[bsb@isllc.com]]></value>
+      <value><![CDATA[555.0154]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[3]]></value>
+    </row>
+    <row>
+      <value><![CDATA[3]]></value>
+      <value><![CDATA[pswd]]></value>
+      <value><![CDATA[Christopher]]></value>
+      <value><![CDATA[Judd]]></value>
+      <value><![CDATA[cjudd@js.com]]></value>
+      <value><![CDATA[555.4119]]></value>
+      <value><![CDATA[555.4119]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[4]]></value>
+    </row>
+  </table>
+  <table name='ROOMS'>
+    <column>PK_ID</column>
+    <column>FK_VENUEID</column>
+    <column>NAME</column>
+    <column>NOTES</column>
+    <column>CAPACITY</column>
+    <row>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Blue Room]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[250]]></value>
+    </row>
+    <row>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Red Room]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[40]]></value>
+    </row>
+    <row>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Yellow Room]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[25]]></value>
+    </row>
+    <row>
+      <value><![CDATA[3]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Pink Room]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[150]]></value>
+    </row>
+    <row>
+      <value><![CDATA[4]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Brown Room]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[200]]></value>
+    </row>
+    <row>
+      <value><![CDATA[5]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Green Room]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[225]]></value>
+    </row>
+    <row>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Purple Room]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[100]]></value>
+    </row>
+  </table>
+  <table name='SCHEDULEENTRIES'>
+    <column>PK_ID</column>
+    <column>NAME</column>
+    <column>DESCRIPTION</column>
+    <column>FK_SESSIONID</column>
+    <column>FK_USERID</column>
+  </table>
+  <table name='ANSWERS'>
+    <column>PK_ID</column>
+    <column>FK_USERID</column>
+    <column>FK_QUESTIONNAIREID</column>
+  </table>
+  <table name='CONFERENCES'>
+    <column>PK_ID</column>
+    <column>NAME</column>
+    <column>DESCRIPTION</column>
+    <column>STARTDATE</column>
+    <column>ENDDATE</column>
+    <column>ABSTRACTSUBMISSIONSTARTDATE</column>
+    <column>ABSTRACTSUBMISSIONENDDATE</column>
+    <column>FK_VENUEID</column>
+    <row>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Open Source Java Conference]]></value>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <value><![CDATA[0]]></value>
+    </row>
+  </table>
+  <table name='REMINDERS'>
+    <column>PK_ID</column>
+    <column>FK_SCHEDULEENTRYID</column>
+    <column>FK_USERID</column>
+    <column>MESSAGE</column>
+    <column>DATEANDTIME</column>
+  </table>
+  <table name='PRESENTATIONTOPICS'>
+    <column>PK_ID</column>
+    <column>NAME</column>
+    <column>DESCRIPTION</column>
+    <row>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Performance]]></value>
+      <value><![CDATA[]]></value>
+    </row>
+    <row>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[Profiling]]></value>
+      <value><![CDATA[]]></value>
+    </row>
+    <row>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[Testing]]></value>
+      <value><![CDATA[]]></value>
+    </row>
+    <row>
+      <value><![CDATA[3]]></value>
+      <value><![CDATA[Design]]></value>
+      <value><![CDATA[]]></value>
+    </row>
+    <row>
+      <value><![CDATA[4]]></value>
+      <value><![CDATA[Productivity]]></value>
+      <value><![CDATA[]]></value>
+    </row>
+    <row>
+      <value><![CDATA[5]]></value>
+      <value><![CDATA[Management]]></value>
+      <value><![CDATA[]]></value>
+    </row>
+    <row>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[Development]]></value>
+      <value><![CDATA[]]></value>
+    </row>
+  </table>
+  <table name='USERROLES'>
+    <column>PK_ID</column>
+    <column>FK_USERID</column>
+    <column>FK_ROLE</column>
+    <row>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[1]]></value>
+    </row>
+    <row>
+      <value><![CDATA[3]]></value>
+      <value><![CDATA[3]]></value>
+      <value><![CDATA[1]]></value>
+    </row>
+  </table>
+  <table name='BOOTHS'>
+    <column>PK_ID</column>
+    <column>FK_VENUEID</column>
+    <column>NOTES</column>
+    <column>SIZE</column>
+    <row>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[10x10]]></value>
+    </row>
+    <row>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[12x18]]></value>
+    </row>
+    <row>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[12x18]]></value>
+    </row>
+    <row>
+      <value><![CDATA[3]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[10x10]]></value>
+    </row>
+    <row>
+      <value><![CDATA[4]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[10x20]]></value>
+    </row>
+    <row>
+      <value><![CDATA[5]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[8x10]]></value>
+    </row>
+    <row>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[10x10]]></value>
+    </row>
+    <row>
+      <value><![CDATA[7]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[8x10]]></value>
+    </row>
+    <row>
+      <value><![CDATA[8]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[]]></value>
+      <value><![CDATA[8x10]]></value>
+    </row>
+  </table>
+  <table name='TRACKS'>
+    <column>PK_ID</column>
+    <column>FK_CONFERENCEID</column>
+    <column>TITLE</column>
+    <column>SUBTITLE</column>
+    <column>DESCRIPTION</column>
+    <row>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[J2SE]]></value>
+      <value><![CDATA[The Java 2 Standard Edition]]></value>
+      <value><![CDATA[]]></value>
+    </row>
+    <row>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[J2EE]]></value>
+      <value><![CDATA[The Java 2 Enterprise Edition]]></value>
+      <value><![CDATA[]]></value>
+    </row>
+    <row>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[J2ME]]></value>
+      <value><![CDATA[The Java 2 Micro Edition]]></value>
+      <value><![CDATA[]]></value>
+    </row>
+    <row>
+      <value><![CDATA[3]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[JINI]]></value>
+      <value><![CDATA[The Jini Network Technology]]></value>
+      <value><![CDATA[]]></value>
+    </row>
+  </table>
+  <table name='ATTENDEES'>
+    <column>PK_ID</column>
+    <column>FK_USERID</column>
+    <row>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[1]]></value>
+    </row>
+  </table>   
+  <table name='PRESENTERS'>
+    <column>PK_ID</column>
+    <column>FK_USERID</column>
+    <column>COMPANY</column>
+    <column>BIO</column>
+    <row>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[Integrallis Software, LLC.]]></value>
+      <value><![CDATA[Brian knows Java]]></value>
+    </row>
+    <row>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[3]]></value>
+      <value><![CDATA[Judd Solutions, LLC.]]></value>
+      <value><![CDATA[Chris also knows Java]]></value>
+    </row>
+  </table>
+  <table name='ABSTRACTS'>
+    <column>PK_ID</column>
+    <column>TITLE</column>
+    <column>TYPE</column>
+    <column>TOPIC</column>
+    <column>LEVEL</column>
+    <column>BODY</column>
+    <column>STATUS</column>
+    <column>FK_PRESENTERID</column>
+    <row>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Generics in JavaTM]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Generic types are slated for incorporation into the JavaTM programming language in JDKTM 1.5 release. In this talk, we highlight key features of the generics extension and discuss tradeoffs between functionality, compatibility, and performance.]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[Advanced RMI]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Tricks, strategies, and idioms that JavaTM Remote Method Invocation (Java RMI) programmers use in the field to achieve high performance and reliability.]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[1]]></value>
+    </row>
+    <row>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[JCP]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[The JCP services defines a process of proposing, developing, and maintaining new Java technology standards.]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[3]]></value>
+      <value><![CDATA[Concurrency Utilities]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Many programs become clearer, shorter, faster, easier to write, and more reliable if, instead of starting from scratch, you use higher-level synchronization and coordination constructs.]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[1]]></value>
+    </row>
+    <row>
+      <value><![CDATA[4]]></value>
+      <value><![CDATA[Five Secrets to Faster Code]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[This session explores ways to ensure that your code performs at its peak with real-world lessons]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[5]]></value>
+      <value><![CDATA[Performance Tuning J2EE]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[A scalable and extensible framework in which JavaTM technology performance tuning can be automated for enterprise applications.]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[1]]></value>
+    </row>
+    <row>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[Open Source J2EE Gems]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Reviews the most prominent Open Source J2EE Tools]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[7]]></value>
+      <value><![CDATA[Logging with Log4J]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Efficient logging in J2EE with Log4J]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[1]]></value>
+    </row>
+    <row>
+      <value><![CDATA[8]]></value>
+      <value><![CDATA[Struts 101]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[Building the Web Tier with Struts]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[9]]></value>
+      <value><![CDATA[Middlegen]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[CMP Entity Bean generation with Middlegen]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[1]]></value>
+    </row>
+    <row>
+      <value><![CDATA[10]]></value>
+      <value><![CDATA[J2EE Testing with Cactus]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[In-server Testing techniques with Cactus]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[0]]></value>
+    </row>
+  </table>
+  <table name='PRESENTATIONS'>
+    <column>PK_ID</column>
+    <column>FK_ABSTRACTID</column>
+    <row>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[1]]></value>
+    </row>
+    <row>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[2]]></value>
+    </row>
+    <row>
+      <value><![CDATA[3]]></value>
+      <value><![CDATA[3]]></value>
+    </row>
+    <row>
+      <value><![CDATA[4]]></value>
+      <value><![CDATA[4]]></value>
+    </row>
+    <row>
+      <value><![CDATA[5]]></value>
+      <value><![CDATA[5]]></value>
+    </row>
+    <row>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[6]]></value>
+    </row>
+    <row>
+      <value><![CDATA[7]]></value>
+      <value><![CDATA[7]]></value>
+    </row>
+    <row>
+      <value><![CDATA[8]]></value>
+      <value><![CDATA[8]]></value>
+    </row>
+    <row>
+      <value><![CDATA[9]]></value>
+      <value><![CDATA[9]]></value>
+    </row>
+    <row>
+      <value><![CDATA[10]]></value>
+      <value><![CDATA[10]]></value>
+    </row>
+  </table>
+  <table name='SESSIONS'>
+    <column>PK_ID</column>
+    <column>FK_PRESENTATIONID</column>
+    <column>FK_ROOMID</column>
+    <column>DATETIMEBEGIN</column>
+    <column>DATETIMEEND</column>
+    <row>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[2004-05-01 12:00:00.0]]></value>
+      <value><![CDATA[2004-05-01 13:00:00.0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[2004-05-01 12:00:00.0]]></value>
+      <value><![CDATA[2004-05-01 13:00:00.0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[2004-05-01 12:00:00.0]]></value>
+      <value><![CDATA[2004-05-01 13:00:00.0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[3]]></value>
+      <value><![CDATA[3]]></value>
+      <value><![CDATA[3]]></value>
+      <value><![CDATA[2004-05-01 12:00:00.0]]></value>
+      <value><![CDATA[2004-05-01 13:00:00.0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[4]]></value>
+      <value><![CDATA[4]]></value>
+      <value><![CDATA[4]]></value>
+      <value><![CDATA[2004-05-01 12:00:00.0]]></value>
+      <value><![CDATA[2004-05-01 13:00:00.0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[5]]></value>
+      <value><![CDATA[5]]></value>
+      <value><![CDATA[5]]></value>
+      <value><![CDATA[2004-05-01 12:00:00.0]]></value>
+      <value><![CDATA[2004-05-01 13:00:00.0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[6]]></value>
+      <value><![CDATA[2004-05-01 12:00:00.0]]></value>
+      <value><![CDATA[2004-05-01 13:00:00.0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[7]]></value>
+      <value><![CDATA[7]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[2004-05-02 13:45:00.0]]></value>
+      <value><![CDATA[2004-05-02 14:45:00.0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[8]]></value>
+      <value><![CDATA[8]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[2004-05-02 13:45:00.0]]></value>
+      <value><![CDATA[2004-05-02 14:45:00.0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[9]]></value>
+      <value><![CDATA[9]]></value>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[2004-05-02 13:45:00.0]]></value>
+      <value><![CDATA[2004-05-02 14:45:00.0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[10]]></value>
+      <value><![CDATA[10]]></value>
+      <value><![CDATA[3]]></value>
+      <value><![CDATA[2004-05-01 13:45:00.0]]></value>
+      <value><![CDATA[2004-05-01 14:45:00.0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[11]]></value>
+      <value><![CDATA[3]]></value>
+      <value><![CDATA[3]]></value>
+      <value><![CDATA[2004-06-01 12:00:00.0]]></value>
+      <value><![CDATA[2004-06-01 13:00:00.0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[12]]></value>
+      <value><![CDATA[4]]></value>
+      <value><![CDATA[4]]></value>
+      <value><![CDATA[2004-06-01 12:00:00.0]]></value>
+      <value><![CDATA[2004-06-01 13:00:00.0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[13]]></value>
+      <value><![CDATA[7]]></value>
+      <value><![CDATA[0]]></value>
+      <value><![CDATA[2004-06-02 13:45:00.0]]></value>
+      <value><![CDATA[2004-06-02 14:45:00.0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[14]]></value>
+      <value><![CDATA[8]]></value>
+      <value><![CDATA[1]]></value>
+      <value><![CDATA[2004-06-02 13:45:00.0]]></value>
+      <value><![CDATA[2004-06-02 14:45:00.0]]></value>
+    </row>
+    <row>
+      <value><![CDATA[15]]></value>
+      <value><![CDATA[9]]></value>
+      <value><![CDATA[2]]></value>
+      <value><![CDATA[2004-06-02 13:45:00.0]]></value>
+      <value><![CDATA[2004-06-02 14:45:00.0]]></value>
+    </row>
+  </table>                 
+</dataset>

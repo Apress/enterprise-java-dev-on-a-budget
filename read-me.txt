@@ -1,0 +1,3 @@
+ant db-setup-middlegen
+ant db-setup-runtime
+ant

@@ -1,0 +1,2 @@
+Directory: src/middlegen-prefs
+Contents: location of the middlegen modifications made via the middlegen gui.

@@ -1,0 +1,77 @@
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+
+ <form-beans>
+  <form-bean name="attendeeForm" type="org.apache.struts.validator.DynaValidatorForm">
+   <form-property name="firstname" type="java.lang.String"/>
+   <form-property name="lastname"  type="java.lang.String"/>
+   <form-property name="email"     type="java.lang.String"/>
+   <form-property name="password"  type="java.lang.String"/>        
+   <form-property name="homephone" type="java.lang.String"/>
+   <form-property name="workphone" type="java.lang.String"/>
+   <form-property name="fax"       type="java.lang.String"/>   
+   <form-property name="street"    type="java.lang.String"/>
+   <form-property name="city"      type="java.lang.String"/>
+   <form-property name="state"     type="java.lang.String"/>
+   <form-property name="zip"       type="java.lang.String"/>
+  </form-bean>
+  <form-bean name="registrationForm" type="com.ejdoab.tcms.web.forms.RegistrationForm" />
+ </form-beans>
+
+ <action-mappings>
+        
+  <action path="/index" forward="index" />                 
+
+  <action path="/speakers" type="com.ejdoab.tcms.web.actions.ListSpeakersAction">
+   <forward name="success" path="speakers" />        
+  </action>
+
+  <action path="/sessions" type="com.ejdoab.tcms.web.actions.ListSessionsAction">
+   <forward name="success" path="sessions" />
+  </action>
+
+  <action path="/sessionsByPresenter" type="com.ejdoab.tcms.web.actions.SessionByPresenterAction">
+   <forward name="success" path="sessionsByPresenter" />
+  </action>
+  
+  <action path="/registration" forward="registration" />
+  
+  <action path="/submitRegistration" 
+          type="com.ejdoab.tcms.web.actions.SubmitRegistrationAction"
+          name="registrationForm"
+          scope="request"
+          input="registration"
+          validate="true"
+  >
+   <forward name="success" path="registrationThanks" redirect="true" />
+   <forward name="failure" path="registration" redirect="true" />
+  </action>
+
+  <action path="/call" forward="call" />
+       
+  <action path="/submitPresenter" 
+    type="com.ejdoab.tcms.web.actions.SubmitPresenterAction" 
+    name="attendeeForm"         
+    scope="request"
+    input="call"
+    validate="true"
+  >
+   <forward name="success" path="speakerThanks" redirect="true" />
+   <forward name="failure" path="call" redirect="true" />
+  </action>
+
+ </action-mappings>
+    
+ <message-resources parameter="com.ejdoab.tcms.web.ApplicationResources"/>
+    
+ <!-- Plug ins -->
+ <plug-in className="org.apache.struts.tiles.TilesPlugin">
+  <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+  <set-property property="moduleAware" value="true" />
+ </plug-in>
+ <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+  <set-property property="pathnames" 
+    value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+ </plug-in>	
+    
+</struts-config>

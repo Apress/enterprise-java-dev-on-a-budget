@@ -1,0 +1,6 @@
+velocity.log
+velocity.log.*
+build.properties
+TEST-REPORT.txt
+bin
+build

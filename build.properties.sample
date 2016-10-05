@@ -1,0 +1,36 @@
+// app 
+app.name=tcms
+database.type=hsqldb
+
+// jboss specific
+jboss.home=C:/java/jboss-3.2.2RC2_jetty-4.2.11
+jboss.server=${app.name}
+jboss.datasource=java:/DefaultDS
+jboss.datasource.mapping=Hypersonic SQL
+java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory
+java.naming.provider.url=jnp://localhost:1099
+
+# physical JNDI name of the queue used by xpetstore.services.mail.MailerMDB
+jboss.queue.mail=queue/mail
+# physical JNDI name of the javax.jms.MailSession
+jboss.mail.session=java:/Mail
+
+// middlegen
+mgen.gui=false
+
+// db properties
+global.db.url=jdbc:hsqldb:hsql://localhost:1701
+global.db.userid=sa
+global.db.password=
+global.db.driver=org.hsqldb.jdbcDriver
+global.db.driver.file=${jboss.home}/server/${jboss.server}/lib/hsqldb.jar
+
+// middlegen db properties
+mgen.db.url=jdbc:hsqldb:${build}/hsqldb/${jboss.server}
+mgen.db.userid=sa
+mgen.db.password=
+mgen.db.driver=org.hsqldb.jdbcDriver
+mgen.db.driver.file=${lib-dev}/middlegen/util/hsqldb.jar
+
+// middlegen CMP properties
+mgen.cmp.package=com.ejdoab.tcms.entities
